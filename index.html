@@ -1,0 +1,1317 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تعلم العربية بسهولة</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&amp;family=Poppins:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+  <style>
+        body {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ffeef8 0%, #e8f5ff 100%);
+            min-height: 100%;
+            height: 100%;
+        }
+
+        html {
+            height: 100%;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            height: 100%;
+            overflow-y: auto;
+        }
+
+        .header {
+            text-align: center;
+            padding: 30px 20px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+        }
+
+        .app-title {
+            font-family: 'Amiri', serif;
+            font-size: 48px;
+            font-weight: 700;
+            margin: 0 0 10px 0;
+            background: linear-gradient(135deg, #ff6b9d 0%, #c06c84 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .welcome-text {
+            font-size: 18px;
+            color: #666;
+            margin: 0;
+        }
+
+        .main-menu {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .menu-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border: 3px solid transparent;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .menu-card.bab1 { border-color: #ffd1dc; background: linear-gradient(135deg, #fff 0%, #ffd1dc 100%); }
+        .menu-card.bab2 { border-color: #b4e7ce; background: linear-gradient(135deg, #fff 0%, #b4e7ce 100%); }
+        .menu-card.bab3 { border-color: #c3b5e6; background: linear-gradient(135deg, #fff 0%, #c3b5e6 100%); }
+        .menu-card.bab4 { border-color: #ffd9a0; background: linear-gradient(135deg, #fff 0%, #ffd9a0 100%); }
+        .menu-card.bab5 { border-color: #a8d8ea; background: linear-gradient(135deg, #fff 0%, #a8d8ea 100%); }
+        .menu-card.bab6 { border-color: #ffb6b9; background: linear-gradient(135deg, #fff 0%, #ffb6b9 100%); }
+        .menu-card.bab7 { border-color: #f8b500; background: linear-gradient(135deg, #fff 0%, #f8b500 100%); }
+
+        .menu-icon {
+            font-size: 64px;
+            margin-bottom: 15px;
+        }
+
+        .menu-title {
+            font-family: 'Amiri', serif;
+            font-size: 28px;
+            font-weight: 700;
+            margin: 10px 0;
+            color: #333;
+        }
+
+        .menu-subtitle {
+            font-size: 14px;
+            color: #666;
+            margin: 5px 0;
+        }
+
+        .content-page {
+            display: none;
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .content-page.active {
+            display: block;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #ff6b9d 0%, #c06c84 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+        }
+
+        .back-button:hover {
+            transform: translateX(-5px);
+            box-shadow: 0 4px 15px rgba(255, 107, 157, 0.3);
+        }
+
+        .page-title {
+            font-family: 'Amiri', serif;
+            font-size: 36px;
+            font-weight: 700;
+            margin: 0 0 30px 0;
+            color: #333;
+            text-align: center;
+        }
+
+        .submenu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .submenu-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid #dee2e6;
+        }
+
+        .submenu-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+        }
+
+        .submenu-icon {
+            font-size: 48px;
+            margin-bottom: 12px;
+        }
+
+        .submenu-title {
+            font-family: 'Amiri', serif;
+            font-size: 22px;
+            font-weight: 600;
+            color: #333;
+            margin: 0;
+        }
+
+        .content-detail {
+            display: none;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+
+        .content-detail.active {
+            display: block;
+        }
+
+        .content-box {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .content-title {
+            font-family: 'Amiri', serif;
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
+            margin: 0 0 15px 0;
+        }
+
+        .content-text {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .audio-player {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            border-radius: 12px;
+            color: white;
+            margin: 15px 0;
+        }
+
+        .play-button {
+            font-size: 32px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .play-button:hover {
+            transform: scale(1.1);
+        }
+
+        .link-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #56ab2f 0%, #a8e063 100%);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 500;
+            margin: 10px 0;
+            transition: all 0.3s ease;
+        }
+
+        .link-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(86, 171, 47, 0.3);
+        }
+
+        .answer-box {
+            background: white;
+            border: 3px solid #dee2e6;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
+            min-height: 100px;
+        }
+
+        .answer-input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            font-size: 16px;
+            font-family: 'Amiri', serif;
+            transition: border-color 0.3s;
+        }
+
+        .answer-input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .image-placeholder {
+            background: linear-gradient(135deg, #e0e0e0 0%, #f5f5f5 100%);
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+            margin: 15px 0;
+            border: 2px dashed #999;
+        }
+
+        .image-placeholder-icon {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        .vocab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .vocab-card {
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .vocab-card:hover {
+            border-color: #667eea;
+            transform: translateY(-3px);
+        }
+
+        .vocab-arabic {
+            font-family: 'Amiri', serif;
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .vocab-indo {
+            font-size: 14px;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .main-menu {
+                grid-template-columns: 1fr;
+            }
+            
+            .app-title {
+                font-size: 36px;
+            }
+            
+            .submenu-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body>
+  <div class="container">
+   <div id="main-page">
+    <div class="header">
+     <h1 class="app-title" id="app-title">تعلم العربية بسهولة</h1>
+     <p class="welcome-text" id="welcome-text">Selamat datang di aplikasi pembelajaran Bahasa Arab Kelas 10 MA</p>
+    </div>
+    <div class="main-menu">
+     <div class="menu-card bab1" onclick="showBab(1)">
+      <div class="menu-icon">
+       👋
+      </div>
+      <h2 class="menu-title">التعارف</h2>
+      <p class="menu-subtitle">Perkenalan</p>
+     </div>
+     <div class="menu-card bab2" onclick="showBab(2)">
+      <div class="menu-icon">
+       🏠
+      </div>
+      <h2 class="menu-title">الأسرة والبيت</h2>
+      <p class="menu-subtitle">Keluarga dan Rumah</p>
+     </div>
+     <div class="menu-card bab3" onclick="showBab(3)">
+      <div class="menu-icon">
+       🏫
+      </div>
+      <h2 class="menu-title">المدرسة</h2>
+      <p class="menu-subtitle">Sekolah</p>
+     </div>
+     <div class="menu-card bab4" onclick="showBab(4)">
+      <div class="menu-icon">
+       ☀️
+      </div>
+      <h2 class="menu-title">الحياة اليومية</h2>
+      <p class="menu-subtitle">Kehidupan Sehari-hari</p>
+     </div>
+     <div class="menu-card bab5" onclick="showBab(5)">
+      <div class="menu-icon">
+       ⚽
+      </div>
+      <h2 class="menu-title">الهوايات</h2>
+      <p class="menu-subtitle">Hobi</p>
+     </div>
+     <div class="menu-card bab6" onclick="showBab(6)">
+      <div class="menu-icon">
+       🍽️
+      </div>
+      <h2 class="menu-title">الطعام والشراب</h2>
+      <p class="menu-subtitle">Makanan &amp; Minuman</p>
+     </div>
+     <div class="menu-card bab7" onclick="showBab(7)">
+      <div class="menu-icon">
+       📝
+      </div>
+      <h2 class="menu-title">الإمتحان</h2>
+      <p class="menu-subtitle">Evaluasi</p>
+     </div>
+    </div>
+   </div><!-- BAB 1: التعارف -->
+   <div id="bab1" class="content-page"><button class="back-button" onclick="backToMain()">⬅ الرجوع</button>
+    <h1 class="page-title">التعارف - Perkenalan</h1>
+    <div class="submenu-grid">
+     <div class="submenu-card" onclick="toggleContent('bab1-mufrodat')">
+      <div class="submenu-icon">
+       📚
+      </div>
+      <h3 class="submenu-title">المفردات</h3>
+     </div>
+     <div class="submenu-card" onclick="toggleContent('bab1-khiwar')">
+      <div class="submenu-icon">
+       💬
+      </div>
+      <h3 class="submenu-title">الحوار</h3>
+     </div>
+     <div class="submenu-card" onclick="toggleContent('bab1-materi')">
+      <div class="submenu-icon">
+       📖
+      </div>
+      <h3 class="submenu-title">المادة</h3>
+     </div>
+     <div class="submenu-card" onclick="toggleContent('bab1-tamrin')">
+      <div class="submenu-icon">
+       ✍️
+      </div>
+      <h3 class="submenu-title">التمرين</h3>
+     </div>
+    </div>
+    <div id="bab1-mufrodat" class="content-detail">
+     <div class="content-box">
+      <h3 class="content-title">المفردات - Kosakata Perkenalan</h3>
+      <div class="vocab-grid">
+       <div class="vocab-card">
+        <div class="vocab-arabic">
+         إِسْمِي
+        </div>
+        <div class="vocab-indo">
+         Namaku
+        </div>
+       </div>
+       <div class="vocab-card">
+        <div class="vocab-arabic">
+         مِنْ أَيْنَ؟
+        </div>
+        <div class="vocab-indo">
+         Dari mana?
+        </div>
+       </div>
+       <div class="vocab-card">
+        <div class="vocab-arabic">
+         أَنَا
+        </div>
+        <div class="vocab-indo">
+         Saya
+        </div>
+       </div>
+       <div class="vocab-card">
+        <div class="vocab-arabic">
+         مُسْلِم
+        </div>
+        <div class="vocab-indo">
+         Muslim
+        </div>
+       </div>
+       <div class="vocab-card">
+        <div class="vocab-arabic">
+         تَشَرَّفْنَا
+        </div>
+        <div class="vocab-indo">
+         Senang bertemu
+        </div>
+       </div>
+       <div class="vocab-card">
+        <div class="vocab-arabic">
+         طَالِب
+        </div>
+        <div class="vocab-indo">
+         Siswa
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div id="bab1-khiwar" class="content-detail">
+     <div class="content-box">
+      <h3 class="content-title">الحوار - Dialog Perkenalan</h3>
+      <div class="image-placeholder">
+       <div class="image-placeholder-icon">
+        🖼️
+       </div>
+       <p>Dialog 1: Perkenalan di Kelas</p>
+      </div>
+      <div class="image-placeholder">
+       <div class="image-placeholder-icon">
+        🖼️
+       </div>
+       <p>Dialog 2: Perkenalan dengan Guru</p>
+      </div>
+      <div class="image-placeholder">
+       <div class="image-placeholder-icon">
+        🖼️
+       </div>
+       <p>Dialog 3: Perkenalan dengan Teman Baru</p>
+      </div>
+     </div>
+    </div>
+    <div id="bab1-materi" class="content-detail">
+     <div class="content-box">
+      <h3 class="content-title">المادة - Materi Pembelajaran</h3>
+      <div class="image-placeholder">
+       <div class="image-placeholder-icon">
+        📄
+       </div>
+       <p>Materi 1: Struktur Kalimat Perkenalan</p>
+      </div>
+      <div class="image-placeholder">
+       <div class="image-placeholder-icon">
+        📄
+       </div>
+       <p>Materi 2: Kata Tanya dalam Perkenalan</p>
+      </div>
+     </div>
+    </div>
+    <div id="bab1-tamrin" class="content-detail">
+     <div class="content-box">
+      <h3 class="content-title">التمرين - Latihan</h3>
+      <p class="content-text">Kerjakan latihan berikut untuk mengasah kemampuan Anda!</p><a href="#" class="link-button" target="_blank" rel="noopener noreferrer">🔗 Buka Latihan Soal</a>
+     </div>
+    </div>
+   </div><!-- BAB 2: الأسرة والبيت -->
+   <div id="bab2" class="content-page"><button class="back-button" onclick="backToMain()">⬅ الرجوع</button>
+    <h1 class="page-title">الأسرة والبيت - Keluarga dan Rumah</h1>
+    <div class="submenu-grid">
+     <div class="submenu-card" onclick="toggleContent('bab2-mufrodat')">
+      <div class="submenu-icon">
+       📚
+      </div>
+      <h3 class="submenu-title">المفردات 2</h3>
+     </div>
+     <div class="submenu-card" onclick="toggleContent('bab2-audio')">
+      <div class="submenu-icon">
+       🔊
+      </div>
+      <h3 class="submenu-title">الصوت</h3>
+     </div>
+     <div class="submenu-card" onclick="toggleContent('bab2-soal')">
+      <div class="submenu-icon">
+       📝
+      </div>
+      <h3 class="submenu-title">الأسئلة</h3>
+     </div>
+    </div>
+    <div id="bab2-mufrodat" class="content-detail">
+     <div class="content-box">
+      <h3 class="content-title">المفردات - Kosakata Keluarga</h3>
+      <div class="vocab-grid">
+       <div class="vocab-card">
+        <div class="vocab-arabic">
+         أَب
+        </div>
+        <div class="vocab-indo">
+         Ayah
+        </div>
+       </div>
+       <div class="vocab-card">
+        <div class="vocab-arabic">
+         أُمّ
+        </div>
+        <div class="vocab-indo">
+         Ibu
+        </div>
+       </div>
+       <div class="vocab-card">
+        <div class="vocab-arabic">
+         أَخ
+        </div>
+        <div class="vocab-indo">
+         Saudara laki-laki
+        </div>
+       </div>
+       <div class="vocab-card">
+        <div class="vocab-arabic">
+         أُخْت
+        </div>
+        <div class="vocab-indo">
+         Saudara perempuan
+        </div>
+       </div>
+       <div class="vocab-card">
+        <div class="vocab-arabic">
+         بَيْت
+        </div>
+        <div class="vocab-indo">
+         Rumah
+        </div>
+       </div>
+       <div class="vocab-card">
+        <div class="vocab-arabic">
+         غُرْفَة
+        </div>
+        <div class="vocab-indo">
+         Kamar
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div id="bab2-audio" class="content-detail">
+     <div class="content-box">
+      <h3 class="content-title">الصوت - Materi Audio</h3>
+      <div class="audio-player">
+       <div class="play-button">
+        ▶️
+       </div>
+       <div>
+        <div style="font-weight: 600;">
+         Audio 1: Percakapan tentang Keluarga
+        </div>
+        <div style="font-size: 14px; opacity: 0.9;">
+         Durasi: 2:30
+        </div>
+       </div>
+      </div>
+      <div class="audio-player">
+       <div class="play-button">
+        ▶️
+       </div>
+       <div>
+        <div style="font-weight: 600;">
+         Audio 2: Deskripsi Rumah
+        </div>
+        <div style="font-size: 14px; opacity: 0.9;">
+         Durasi: 3:15
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div id="bab2-soal" class="content-detail">
+     <div class="content-box">
+      <h3 class="content-title">الأسئلة - Link Soal</h3>
+      <p class="content-text">Klik link di bawah untuk mengakses soal latihan:</p><a href="#" class="link-button" target="_blank" rel="noopener noreferrer">🔗 Soal Latihan 1 - Keluarga</a>
+     </div>
+    </div>
+   </div><!-- BAB 3: المدرسة -->
+   <div id="bab3" class="content-page"><button class="back-button" onclick="backToMain()">⬅ الرجوع</button>
+    <h1 class="page-title">المدرسة - Sekolah</h1>
+    <div class="submenu-grid">
+     <div class="submenu-card" onclick="toggleContent('bab3-mufrodat')">
+      <div class="submenu-icon">
+       📚
+      </div>
+      <h3 class="submenu-title">المفردات</h3>
+     </div>
+     <div class="submenu-card" onclick="toggleContent('bab3-teks')">
+      <div class="submenu-icon">
+       📖
+      </div>
+      <h3 class="submenu-title">النص</h3>
+     </div>
+     <div class="submenu-card" onclick="toggleContent('bab3-soal')">
+      <div class="submenu-icon">
+       ✍️
+      </div>
+      <h3 class="submenu-title">الأسئلة</h3>
+     </div>
+    </div>
+    <div id="bab3-mufrodat" class="content-detail">
+     <div class="content-box">
+      <h3 class="content-title">المفردات - Kosakata Sekolah</h3>
+      <div class="vocab-grid">
+       <div class="vocab-card">
+        <div class="vocab-arabic">
+         مَدْرَسَة
+        </div>
+        <div class="vocab-indo">
+         Sekolah
+        </div>
+       </div>
+       <div class="vocab-card">
+        <div class="vocab-arabic">
+         فَصْل
+        </div>
+        <div class="vocab-indo">
+         Kelas
+        </div>
+       </div>
+       <div class="vocab-card">
+        <div class="vocab-arabic">
+         مُدَرِّس
+        </div>
+        <div class="vocab-indo">
+         Guru
+        </div>
+       </div>
+       <div class="vocab-card">
+        <div class="vocab-arabic">
+         كِتَاب
+        </div>
+        <div class="vocab-indo">
+         Buku
+        </div>
+       </div>
+       <div class="vocab-card">
+        <div class="vocab-arabic">
+         قَلَم
+        </div>
+        <div class="vocab-indo">
+         Pena
+        </div>
+       </div>
+       <div class="vocab-card">
+        <div class="vocab-arabic">
+         مَكْتَبَة
+        </div>
+        <div class="vocab-indo">
+         Perpustakaan
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div id="bab3-teks" class="content-detail">
+     <div class="content-box">
+      <h3 class="content-title">النص - Teks Bacaan</h3>
+      <p class="content-text" style="font-family: 'Amiri', serif; font-size: 20px; line-height: 2;">مَدْرَسَتِي جَمِيلَةٌ وَكَبِيرَةٌ. فِي الْمَدْرَسَةِ فُصُولٌ كَثِيرَةٌ وَمَكْتَبَةٌ وَاسِعَةٌ. أَنَا طَالِبٌ فِي الصَّفِّ الْعَاشِرِ. أُحِبُّ مَدْرَسَتِي كَثِيرًا.</p>
+     </div>
+    </div>
+    <div id="bab3-soal" class="content-detail">
+     <div class="content-box">
+      <h3 class="content-title">الأسئلة - Soal dan Jawaban</h3>
+      <div class="image-placeholder">
+       <div class="image-placeholder-icon">
+        📋
+       </div>
+       <p>Soal 1: Pertanyaan tentang teks bacaan</p>
+      </div>
+      <div class="image-placeholder">
+       <div class="image-placeholder-icon">
+        📋
+       </div>
+       <p>Soal 2: Pertanyaan pilihan ganda</p>
+      </div>
+      <div class="answer-box">
+       <h4 style="margin-top: 0; font-family: 'Amiri', serif;">مكان الإجابة - Tempat Jawaban</h4><textarea class="answer-input" rows="5" placeholder="اكتب إجابتك هنا... / Tulis jawabanmu di sini..."></textarea>
+      </div>
+     </div>
+    </div>
+   </div><!-- BAB 4: الحياة اليومية -->
+   <div id="bab4" class="content-page"><button class="back-button" onclick="backToMain()">⬅ الرجوع</button>
+    <h1 class="page-title">الحياة اليومية - Kehidupan Sehari-hari</h1>
+    <div class="submenu-grid">
+     <div class="submenu-card" onclick="toggleContent('bab4-mufrodat')">
+      <div class="submenu-icon">
+       📚
+      </div>
+      <h3 class="submenu-title">المفردات</h3>
+     </div>
+     <div class="submenu-card" onclick="toggleContent('bab4-teks')">
+      <div class="submenu-icon">
+       📖
+      </div>
+      <h3 class="submenu-title">النص</h3>
+     </div>
+     <div class="submenu-card" onclick="toggleContent('bab4-audio')">
+      <div class="submenu-icon">
+       🔊
+      </div>
+      <h3 class="submenu-title">الصوت</h3>
+     </div>
+     <div class="submenu-card" onclick="toggleContent('bab4-soal')">
+      <div class="submenu-icon">
+       📝
+      </div>
+      <h3 class="submenu-title">الأسئلة</h3>
+     </div>
+    </div>
+    <div id="bab4-mufrodat" class="content-detail">
+     <div class="content-box">
+      <h3 class="content-title">المفردات - Kosakata Aktivitas Harian</h3>
+      <div class="vocab-grid">
+       <div class="vocab-card">
+        <div class="vocab-arabic">
+         يَوْم
+        </div>
+        <div class="vocab-indo">
+         Hari
+        </div>
+       </div>
+       <div class="vocab-card">
+        <div class="vocab-arabic">
+         صَبَاح
+        </div>
+        <div class="vocab-indo">
+         Pagi
+        </div>
+       </div>
+       <div class="vocab-card">
+        <div class="vocab-arabic">
+         أَكَلَ
+        </div>
+        <div class="vocab-indo">
+         Makan
+        </div>
+       </div>
+       <div class="vocab-card">
+        <div class="vocab-arabic">
+         نَامَ
+        </div>
+        <div class="vocab-indo">
+         Tidur
+        </div>
+       </div>
+       <div class="vocab-card">
+        <div class="vocab-arabic">
+         ذَهَبَ
+        </div>
+        <div class="vocab-indo">
+         Pergi
+        </div>
+       </div>
+       <div class="vocab-card">
+        <div class="vocab-arabic">
+         دَرَسَ
+        </div>
+        <div class="vocab-indo">
+         Belajar
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div id="bab4-teks" class="content-detail">
+     <div class="content-box">
+      <h3 class="content-title">النص - Teks Bacaan</h3>
+      <p class="content-text" style="font-family: 'Amiri', serif; font-size: 20px; line-height: 2;">أَسْتَيْقِظُ فِي السَّاعَةِ الْخَامِسَةِ صَبَاحًا. أُصَلِّي الْفَجْرَ ثُمَّ أَقْرَأُ الْقُرْآنَ. بَعْدَ ذَلِكَ أَتَنَاوَلُ الْفُطُورَ وَأَذْهَبُ إِلَى الْمَدْرَسَةِ.</p>
+     </div>
+    </div>
+    <div id="bab4-audio" class="content-detail">
+     <div class="content-box">
+      <h3 class="content-title">الصوت - Materi Audio</h3>
+      <div class="audio-player">
+       <div class="play-button">
+        ▶️
+       </div>
+       <div>
+        <div style="font-weight: 600;">
+         Audio: Rutinitas Sehari-hari
+        </div>
+        <div style="font-size: 14px; opacity: 0.9;">
+         Durasi: 3:45
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div id="bab4-soal" class="content-detail">
+     <div class="content-box">
+      <h3 class="content-title">الأسئلة - Link Soal</h3><a href="#" class="link-button" target="_blank" rel="noopener noreferrer">🔗 Soal Latihan - Kehidupan Sehari-hari</a>
+     </div>
+    </div>
+   </div><!-- BAB 5: الهوايات -->
+   <div id="bab5" class="content-page"><button class="back-button" onclick="backToMain()">⬅ الرجوع</button>
+    <h1 class="page-title">الهوايات - Hobi</h1>
+    <div class="submenu-grid">
+     <div class="submenu-card" onclick="toggleContent('bab5-mufrodat')">
+      <div class="submenu-icon">
+       📚
+      </div>
+      <h3 class="submenu-title">المفردات</h3>
+     </div>
+     <div class="submenu-card" onclick="toggleContent('bab5-teks')">
+      <div class="submenu-icon">
+       📖
+      </div>
+      <h3 class="submenu-title">النص</h3>
+     </div>
+     <div class="submenu-card" onclick="toggleContent('bab5-audio')">
+      <div class="submenu-icon">
+       🔊
+      </div>
+      <h3 class="submenu-title">الصوت</h3>
+     </div>
+     <div class="submenu-card" onclick="toggleContent('bab5-qowaid')">
+      <div class="submenu-icon">
+       📝
+      </div>
+      <h3 class="submenu-title">القواعد</h3>
+     </div>
+     <div class="submenu-card" onclick="toggleContent('bab5-soal')">
+      <div class="submenu-icon">
+       ✍️
+      </div>
+      <h3 class="submenu-title">الأسئلة</h3>
+     </div>
+    </div>
+    <div id="bab5-mufrodat" class="content-detail">
+     <div class="content-box">
+      <h3 class="content-title">المفردات - Kosakata Hobi (Bagian 1)</h3>
+      <div class="image-placeholder">
+       <div class="image-placeholder-icon">
+        🖼️
+       </div>
+       <p>Mufrodat 1: Kosakata Olahraga</p>
+      </div>
+     </div>
+     <div class="content-box">
+      <h3 class="content-title">المفردات - Kosakata Hobi (Bagian 2)</h3>
+      <div class="image-placeholder">
+       <div class="image-placeholder-icon">
+        🖼️
+       </div>
+       <p>Mufrodat 2: Kosakata Seni dan Musik</p>
+      </div>
+     </div>
+    </div>
+    <div id="bab5-teks" class="content-detail">
+     <div class="content-box">
+      <h3 class="content-title">النص - Teks Bacaan</h3>
+      <p class="content-text" style="font-family: 'Amiri', serif; font-size: 20px; line-height: 2;">هِوَايَتِي الْمُفَضَّلَةُ هِيَ كُرَةُ الْقَدَمِ. أَلْعَبُ كُرَةَ الْقَدَمِ كُلَّ يَوْمِ السَّبْتِ. أُحِبُّ أَيْضًا قِرَاءَةَ الْكُتُبِ وَالْاِسْتِمَاعَ إِلَى الْمُوسِيقَى.</p>
+     </div>
+    </div>
+    <div id="bab5-audio" class="content-detail">
+     <div class="content-box">
+      <h3 class="content-title">الصوت - Materi Audio</h3>
+      <div class="audio-player">
+       <div class="play-button">
+        ▶️
+       </div>
+       <div>
+        <div style="font-weight: 600;">
+         Audio: Berbicara tentang Hobi
+        </div>
+        <div style="font-size: 14px; opacity: 0.9;">
+         Durasi: 2:50
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div id="bab5-qowaid" class="content-detail">
+     <div class="content-box">
+      <h3 class="content-title">القواعد - Tata Bahasa</h3>
+      <div class="image-placeholder">
+       <div class="image-placeholder-icon">
+        📋
+       </div>
+       <p>Qowaid: Struktur Kalimat tentang Hobi</p>
+      </div>
+     </div>
+    </div>
+    <div id="bab5-soal" class="content-detail">
+     <div class="content-box">
+      <h3 class="content-title">الأسئلة - Link Soal</h3><a href="#" class="link-button" target="_blank" rel="noopener noreferrer">🔗 Soal Latihan - Hobi</a>
+     </div>
+    </div>
+   </div><!-- BAB 6: الطعام والشراب -->
+   <div id="bab6" class="content-page"><button class="back-button" onclick="backToMain()">⬅ الرجوع</button>
+    <h1 class="page-title">الطعام والشراب - Makanan &amp; Minuman</h1>
+    <div class="submenu-grid">
+     <div class="submenu-card" onclick="toggleContent('bab6-mufrodat')">
+      <div class="submenu-icon">
+       📚
+      </div>
+      <h3 class="submenu-title">المفردات</h3>
+     </div>
+     <div class="submenu-card" onclick="toggleContent('bab6-teks')">
+      <div class="submenu-icon">
+       📖
+      </div>
+      <h3 class="submenu-title">النص</h3>
+     </div>
+     <div class="submenu-card" onclick="toggleContent('bab6-audio')">
+      <div class="submenu-icon">
+       🔊
+      </div>
+      <h3 class="submenu-title">الصوت</h3>
+     </div>
+     <div class="submenu-card" onclick="toggleContent('bab6-materi')">
+      <div class="submenu-icon">
+       📋
+      </div>
+      <h3 class="submenu-title">المادة</h3>
+     </div>
+     <div class="submenu-card" onclick="toggleContent('bab6-soal')">
+      <div class="submenu-icon">
+       ✍️
+      </div>
+      <h3 class="submenu-title">الأسئلة</h3>
+     </div>
+    </div>
+    <div id="bab6-mufrodat" class="content-detail">
+     <div class="content-box">
+      <h3 class="content-title">المفردات - Kosakata Makanan</h3>
+      <div class="vocab-grid">
+       <div class="vocab-card">
+        <div class="vocab-arabic">
+         طَعَام
+        </div>
+        <div class="vocab-indo">
+         Makanan
+        </div>
+       </div>
+       <div class="vocab-card">
+        <div class="vocab-arabic">
+         شَرَاب
+        </div>
+        <div class="vocab-indo">
+         Minuman
+        </div>
+       </div>
+       <div class="vocab-card">
+        <div class="vocab-arabic">
+         أَرُز
+        </div>
+        <div class="vocab-indo">
+         Nasi
+        </div>
+       </div>
+       <div class="vocab-card">
+        <div class="vocab-arabic">
+         لَحْم
+        </div>
+        <div class="vocab-indo">
+         Daging
+        </div>
+       </div>
+       <div class="vocab-card">
+        <div class="vocab-arabic">
+         مَاء
+        </div>
+        <div class="vocab-indo">
+         Air
+        </div>
+       </div>
+       <div class="vocab-card">
+        <div class="vocab-arabic">
+         فَاكِهَة
+        </div>
+        <div class="vocab-indo">
+         Buah
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div id="bab6-teks" class="content-detail">
+     <div class="content-box">
+      <h3 class="content-title">النص - Teks Bacaan</h3>
+      <p class="content-text" style="font-family: 'Amiri', serif; font-size: 20px; line-height: 2;">طَعَامِي الْمُفَضَّلُ هُوَ الْأَرُزُ وَالدَّجَاجُ. أَتَنَاوَلُ الْفُطُورَ فِي السَّاعَةِ السَّابِعَةِ. أُحِبُّ شُرْبَ الْعَصِيرِ وَالشَّايِ.</p>
+     </div>
+    </div>
+    <div id="bab6-audio" class="content-detail">
+     <div class="content-box">
+      <h3 class="content-title">الصوت - Materi Audio</h3>
+      <div class="audio-player">
+       <div class="play-button">
+        ▶️
+       </div>
+       <div>
+        <div style="font-weight: 600;">
+         Audio: Dialog di Restoran
+        </div>
+        <div style="font-size: 14px; opacity: 0.9;">
+         Durasi: 3:20
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div id="bab6-materi" class="content-detail">
+     <div class="content-box">
+      <h3 class="content-title">المادة - Materi Pembelajaran</h3>
+      <div class="image-placeholder">
+       <div class="image-placeholder-icon">
+        📄
+       </div>
+       <p>Materi 1: Jenis-jenis Makanan</p>
+      </div>
+      <div class="image-placeholder">
+       <div class="image-placeholder-icon">
+        📄
+       </div>
+       <p>Materi 2: Ungkapan di Restoran</p>
+      </div>
+     </div>
+    </div>
+    <div id="bab6-soal" class="content-detail">
+     <div class="content-box">
+      <h3 class="content-title">الأسئلة - Link Soal</h3><a href="#" class="link-button" target="_blank" rel="noopener noreferrer">🔗 Soal Latihan - Makanan &amp; Minuman</a>
+     </div>
+    </div>
+   </div><!-- BAB 7: الإمتحان -->
+   <div id="bab7" class="content-page"><button class="back-button" onclick="backToMain()">⬅ الرجوع</button>
+    <h1 class="page-title">الإمتحان - Evaluasi</h1>
+    <div class="content-box" style="text-align: center; padding: 50px 30px;">
+     <div style="font-size: 80px; margin-bottom: 20px;">
+      📝
+     </div>
+     <h2 style="font-family: 'Amiri', serif; font-size: 32px; margin-bottom: 20px;">اختبار التقييم النهائي</h2>
+     <p class="content-text" style="font-size: 18px; margin-bottom: 30px;">Ujian evaluasi ini mencakup semua materi yang telah dipelajari dari Bab 1 hingga Bab 6. Pastikan Anda telah memahami semua materi sebelum memulai.</p><a href="#" class="link-button" style="font-size: 18px; padding: 20px 40px;" target="_blank" rel="noopener noreferrer"> 🔗 Mulai Evaluasi Online </a>
+     <div style="margin-top: 30px; padding: 20px; background: #fff3cd; border-radius: 12px; border: 2px solid #ffc107;">
+      <p style="margin: 0; color: #856404; font-weight: 500;">⚠️ Waktu pengerjaan: 90 menit | Total soal: 50 butir</p>
+     </div>
+    </div>
+   </div>
+  </div>
+  <script>
+        const defaultConfig = {
+            app_title: "تعلم العربية بسهولة",
+            welcome_text: "Selamat datang di aplikasi pembelajaran Bahasa Arab Kelas 10 MA",
+            background_color: "#ffeef8",
+            surface_color: "#ffffff",
+            text_color: "#333333",
+            primary_action_color: "#ff6b9d",
+            secondary_action_color: "#667eea",
+            font_family: "Poppins",
+            font_size: 16
+        };
+
+        let config = { ...defaultConfig };
+
+        async function onConfigChange(newConfig) {
+            const customFont = newConfig.font_family || defaultConfig.font_family;
+            const baseSize = newConfig.font_size || defaultConfig.font_size;
+            const baseFontStack = 'sans-serif';
+
+            document.body.style.fontFamily = `${customFont}, ${baseFontStack}`;
+            document.body.style.background = `linear-gradient(135deg, ${newConfig.background_color || defaultConfig.background_color} 0%, #e8f5ff 100%)`;
+
+            const headers = document.querySelectorAll('.header');
+            headers.forEach(header => {
+                header.style.backgroundColor = newConfig.surface_color || defaultConfig.surface_color;
+            });
+
+            const appTitle = document.getElementById('app-title');
+            appTitle.textContent = newConfig.app_title || defaultConfig.app_title;
+            appTitle.style.fontSize = `${baseSize * 3}px`;
+            appTitle.style.background = `linear-gradient(135deg, ${newConfig.primary_action_color || defaultConfig.primary_action_color} 0%, #c06c84 100%)`;
+            appTitle.style.webkitBackgroundClip = 'text';
+            appTitle.style.webkitTextFillColor = 'transparent';
+            appTitle.style.backgroundClip = 'text';
+
+            const welcomeText = document.getElementById('welcome-text');
+            welcomeText.textContent = newConfig.welcome_text || defaultConfig.welcome_text;
+            welcomeText.style.fontSize = `${baseSize * 1.125}px`;
+            welcomeText.style.color = newConfig.text_color || defaultConfig.text_color;
+
+            const menuCards = document.querySelectorAll('.menu-card');
+            menuCards.forEach(card => {
+                card.style.backgroundColor = newConfig.surface_color || defaultConfig.surface_color;
+            });
+
+            const backButtons = document.querySelectorAll('.back-button');
+            backButtons.forEach(button => {
+                button.style.background = `linear-gradient(135deg, ${newConfig.primary_action_color || defaultConfig.primary_action_color} 0%, #c06c84 100%)`;
+                button.style.fontSize = `${baseSize}px`;
+            });
+
+            const pageTitles = document.querySelectorAll('.page-title');
+            pageTitles.forEach(title => {
+                title.style.fontSize = `${baseSize * 2.25}px`;
+                title.style.color = newConfig.text_color || defaultConfig.text_color;
+            });
+
+            const contentTexts = document.querySelectorAll('.content-text');
+            contentTexts.forEach(text => {
+                text.style.fontSize = `${baseSize}px`;
+                text.style.color = newConfig.text_color || defaultConfig.text_color;
+            });
+
+            const menuTitles = document.querySelectorAll('.menu-title');
+            menuTitles.forEach(title => {
+                title.style.fontSize = `${baseSize * 1.75}px`;
+                title.style.color = newConfig.text_color || defaultConfig.text_color;
+            });
+
+            const submenuTitles = document.querySelectorAll('.submenu-title');
+            submenuTitles.forEach(title => {
+                title.style.fontSize = `${baseSize * 1.375}px`;
+                title.style.color = newConfig.text_color || defaultConfig.text_color;
+            });
+
+            const linkButtons = document.querySelectorAll('.link-button');
+            linkButtons.forEach(button => {
+                button.style.background = `linear-gradient(135deg, ${newConfig.secondary_action_color || defaultConfig.secondary_action_color} 0%, #764ba2 100%)`;
+                button.style.fontSize = `${baseSize}px`;
+            });
+
+            const contentBoxes = document.querySelectorAll('.content-box');
+            contentBoxes.forEach(box => {
+                box.style.backgroundColor = newConfig.surface_color || defaultConfig.surface_color;
+            });
+        }
+
+        function showBab(babNumber) {
+            document.getElementById('main-page').style.display = 'none';
+            
+            for (let i = 1; i <= 7; i++) {
+                const babPage = document.getElementById(`bab${i}`);
+                if (babPage) {
+                    babPage.classList.remove('active');
+                }
+            }
+            
+            const selectedBab = document.getElementById(`bab${babNumber}`);
+            if (selectedBab) {
+                selectedBab.classList.add('active');
+            }
+        }
+
+        function backToMain() {
+            document.getElementById('main-page').style.display = 'block';
+            
+            for (let i = 1; i <= 7; i++) {
+                const babPage = document.getElementById(`bab${i}`);
+                if (babPage) {
+                    babPage.classList.remove('active');
+                }
+            }
+            
+            const allContentDetails = document.querySelectorAll('.content-detail');
+            allContentDetails.forEach(detail => {
+                detail.classList.remove('active');
+            });
+        }
+
+        function toggleContent(contentId) {
+            const allContentDetails = document.querySelectorAll('.content-detail');
+            allContentDetails.forEach(detail => {
+                if (detail.id === contentId) {
+                    detail.classList.toggle('active');
+                } else {
+                    detail.classList.remove('active');
+                }
+            });
+        }
+
+        if (window.elementSdk) {
+            window.elementSdk.init({
+                defaultConfig,
+                onConfigChange: async (newConfig) => {
+                    config = { ...config, ...newConfig };
+                    await onConfigChange(config);
+                },
+                mapToCapabilities: (config) => ({
+                    recolorables: [
+                        {
+                            get: () => config.background_color || defaultConfig.background_color,
+                            set: (value) => {
+                                config.background_color = value;
+                                window.elementSdk.setConfig({ background_color: value });
+                            }
+                        },
+                        {
+                            get: () => config.surface_color || defaultConfig.surface_color,
+                            set: (value) => {
+                                config.surface_color = value;
+                                window.elementSdk.setConfig({ surface_color: value });
+                            }
+                        },
+                        {
+                            get: () => config.text_color || defaultConfig.text_color,
+                            set: (value) => {
+                                config.text_color = value;
+                                window.elementSdk.setConfig({ text_color: value });
+                            }
+                        },
+                        {
+                            get: () => config.primary_action_color || defaultConfig.primary_action_color,
+                            set: (value) => {
+                                config.primary_action_color = value;
+                                window.elementSdk.setConfig({ primary_action_color: value });
+                            }
+                        },
+                        {
+                            get: () => config.secondary_action_color || defaultConfig.secondary_action_color,
+                            set: (value) => {
+                                config.secondary_action_color = value;
+                                window.elementSdk.setConfig({ secondary_action_color: value });
+                            }
+                        }
+                    ],
+                    borderables: [],
+                    fontEditable: {
+                        get: () => config.font_family || defaultConfig.font_family,
+                        set: (value) => {
+                            config.font_family = value;
+                            window.elementSdk.setConfig({ font_family: value });
+                        }
+                    },
+                    fontSizeable: {
+                        get: () => config.font_size || defaultConfig.font_size,
+                        set: (value) => {
+                            config.font_size = value;
+                            window.elementSdk.setConfig({ font_size: value });
+                        }
+                    }
+                }),
+                mapToEditPanelValues: (config) => new Map([
+                    ["app_title", config.app_title || defaultConfig.app_title],
+                    ["welcome_text", config.welcome_text || defaultConfig.welcome_text]
+                ])
+            });
+        }
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a266bab6116fcfc',t:'MTc2Mzc5MzQ3MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
